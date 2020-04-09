@@ -1,8 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Db from './utils/db';
 
 function App() {
+
+  React.useEffect(() => {
+    async function getData() {
+      await Db.getData();
+    }
+    getData();
+  });
+
   return (
     <div className="App">
       <header className="App-header">
