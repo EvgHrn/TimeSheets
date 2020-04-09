@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import RowDataList from './components/RowDataList';
 import Table from "./components/Table";
+import DetailTable from "./components/DetailTable";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    // padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -47,6 +47,8 @@ function App() {
 
   const [data, setData] = React.useState([]);
 	const [calculatedData, setCalculatedData] = React.useState([]);
+  const [detailTableData, setDetailTableData] = React.useState({});
+  const [isDetailTableOpen, setIsDetailTableOpen] = React.useState(false);
 
   React.useEffect(() => {
 
@@ -63,12 +65,23 @@ function App() {
 
   }, []);
 
+  const handleRowClick = (event, orderNumber) => {
+    setDetailTableData({
+      orderNumber
+    });
+    setIsDetailTableOpen(true);
+  };
+
+  const handleDetailTableClose = () => {
+    setIsDetailTableOpen(false);
+  };
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={9}>
           <div className={classes.paper}>
-            <Table data={calculatedData}/>
+            <Table data={calculatedData} handleClick={handleRowClick}/>
           </div>
         </Grid>
         <Grid item xs={3}>
@@ -77,6 +90,7 @@ function App() {
           </Paper>
         </Grid>
       </Grid>
+      <DetailTable data={detailTableData} isOpen={isDetailTableOpen} handleClose={handleDetailTableClose}/>
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function Table(props) {
 
 	return (
 		<TableContainer component={Paper}>
-			<MaterialTable className={classes.table} size="small" aria-label="a dense table">
+			<MaterialTable className={classes.table} size="medium" aria-label="a dense table">
 				<TableHead>
 					<TableRow>
 						<TableCell align="center">Номер заказа</TableCell>
@@ -33,7 +33,7 @@ export default function Table(props) {
 				</TableHead>
 				<TableBody>
 					{data.map((row, index) => (
-						<TableRow key={index}>
+						<TableRow key={index} onClick={(event) => props.handleClick(event, row.orderNumber)}>
 							<TableCell component="th" scope="row" align="center">
 								{row.orderNumber}
 							</TableCell>
