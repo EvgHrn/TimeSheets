@@ -27,23 +27,17 @@ export default function Table(props) {
 			<MaterialTable className={classes.table} size="small" aria-label="a dense table">
 				<TableHead>
 					<TableRow>
-						<TableCell>Dessert (100g serving)</TableCell>
-						<TableCell align="right">Calories</TableCell>
-						<TableCell align="right">Fat&nbsp;(g)</TableCell>
-						<TableCell align="right">Carbs&nbsp;(g)</TableCell>
-						<TableCell align="right">Protein&nbsp;(g)</TableCell>
+						<TableCell align="center">Номер заказа</TableCell>
+						<TableCell align="center">Кол-во</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{data.map((row) => (
-						<TableRow key={row.name}>
-							<TableCell component="th" scope="row">
-								{row.name}
+					{data.map((row, index) => (
+						<TableRow key={index}>
+							<TableCell component="th" scope="row" align="center">
+								{row.orderNumber}
 							</TableCell>
-							<TableCell align="right">{row.calories}</TableCell>
-							<TableCell align="right">{row.fat}</TableCell>
-							<TableCell align="right">{row.carbs}</TableCell>
-							<TableCell align="right">{row.protein}</TableCell>
+							<TableCell align="center">{row.count}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

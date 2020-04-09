@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -32,10 +32,11 @@ const calculateResultData = (rowData) => {
     if(itemObjIndex < 0) {
       acc.push({
         orderNumber: obj.orderNumber,
-        count: 1
+        count: obj.count
       });
+    } else {
+      acc[itemObjIndex].count = acc[itemObjIndex].count + obj.count;
     }
-
     return acc;
   }, []);
 };
@@ -45,6 +46,7 @@ function App() {
   const classes = useStyles();
 
   const [data, setData] = React.useState([]);
+	const [calculatedData, setCalculatedData] = React.useState([]);
 
   React.useEffect(() => {
 
@@ -55,7 +57,8 @@ function App() {
     getData()
       .then((data) => {
         console.log("App got data: ", data);
-        setData(calculateResultData(data));
+	      setCalculatedData(calculateResultData(data));
+	      setData(data);
       });
 
   }, []);
@@ -65,7 +68,7 @@ function App() {
       <Grid container spacing={3}>
         <Grid item xs={9}>
           <div className={classes.paper}>
-            <Table data={data}/>
+            <Table data={calculatedData}/>
           </div>
         </Grid>
         <Grid item xs={3}>
