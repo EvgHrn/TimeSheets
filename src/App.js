@@ -6,8 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import RowDataList from './components/RowDataList';
-
-const max_height = window.innerHeight - 100;
+import Table from "./components/Table";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +19,26 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+
+const calculateResultData = (rowData) => {
+  // [
+  //   {
+  //      orderNumber,
+  //     count
+  //   }
+  // ]
+  return rowData.reduce((acc, obj) => {
+    const itemObjIndex = acc.findIndex(itemObject => itemObject.orderNumber === obj.orderNumber);
+    if(itemObjIndex < 0) {
+      acc.push({
+        orderNumber: obj.orderNumber,
+        count: 1
+      });
+    }
+
+    return acc;
+  }, []);
+};
 
 function App() {
 
@@ -36,7 +55,7 @@ function App() {
     getData()
       .then((data) => {
         console.log("App got data: ", data);
-        setData(data);
+        setData(calculateResultData(data));
       });
 
   }, []);
@@ -45,7 +64,9 @@ function App() {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={9}>
-          <Paper className={classes.paper}>xs=9</Paper>
+          <div className={classes.paper}>
+            <Table data={data}/>
+          </div>
         </Grid>
         <Grid item xs={3}>
           <Paper className={classes.paper}>
