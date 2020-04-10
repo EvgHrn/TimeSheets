@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CustomListItem(props) {
-	const text = `${props.data.orderNumber} ${props.data.count}шт. ${props.data.userName} ${props.data.dateTime.toLocaleString()}`;
+	const text = `${props.data.orderNumber} ${props.data.count}шт. ${props.data.userName} ${new Date(props.data.dateTime).toLocaleString()}`;
 	return (
 		<ListItem>
 			<ListItemText primary={text}/>

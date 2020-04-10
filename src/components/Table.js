@@ -15,8 +15,6 @@ const useStyles = makeStyles({
 
 export default function Table(props) {
 
-	console.log("Result table data: ", props.data);
-
 	const classes = useStyles();
 
 	let data = props.data;

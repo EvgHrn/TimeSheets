@@ -4,6 +4,8 @@
     <list default="true" id="ce1f288f-4ac1-4213-9e0e-ffa35646d897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RowDataList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RowDataList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

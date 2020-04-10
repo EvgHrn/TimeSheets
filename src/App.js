@@ -47,7 +47,7 @@ function App() {
 
   const [data, setData] = React.useState([]);
 	const [calculatedData, setCalculatedData] = React.useState([]);
-  const [detailTableData, setDetailTableData] = React.useState({});
+  const [detailTableData, setDetailTableData] = React.useState({ orderNumber: "", items: [] });
   const [isDetailTableOpen, setIsDetailTableOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -65,9 +65,20 @@ function App() {
 
   }, []);
 
+  const collectOrderData = (orderNumber) => {
+
+    const items = data.filter((dataObj) => dataObj.orderNumber === orderNumber);
+
+    return {
+      orderNumber,
+      items
+    }
+  };
+
   const handleRowClick = (event, orderNumber) => {
+
     setDetailTableData({
-      orderNumber
+      ...collectOrderData(orderNumber)
     });
     setIsDetailTableOpen(true);
   };
